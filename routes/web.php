@@ -20,4 +20,5 @@ Route::get('/create', 'BookController@create')->name('create');
 Route::post('/', 'BookController@store')->name('store');
 Route::get('{book}/edit', 'BookController@edit')->name('edit');
 Route::patch('/{book}', 'BookController@update')->name('update');
+Route::delete('/{book}', 'BookController@destroy')->name('delete');
 

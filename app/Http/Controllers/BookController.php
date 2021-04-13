@@ -54,14 +54,10 @@ class BookController extends Controller
         return redirect()->action('BookController@index')->with('success', 'Книга успешно отредактирована');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Book  $book
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy(Book $book)
     {
-        //
+        $book->delete();
+        return redirect()->route('index')->with('success', 'Книга успешно удалена');
     }
 }

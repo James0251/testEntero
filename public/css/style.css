@@ -36,6 +36,7 @@
 
 .features-table td.grey
 {
+    width: 50px;
     background: #efefef;
     background: rgba(144,144,144,0.15);
     border-right: 1px solid white;
@@ -43,6 +44,7 @@
 
 .features-table td.green
 {
+    width: 50px;
     background: #e7f3d4;
     background: rgba(184,243,85,0.3);
 }
