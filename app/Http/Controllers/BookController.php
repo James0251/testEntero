@@ -42,27 +42,16 @@ class BookController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Book  $book
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Book $book)
-    {
-        //
+
+    public function edit(Book $book) {
+        return view('book.edit', compact('book'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Book  $book
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, Book $book)
     {
-        //
+        $book->update($request->all());
+        return redirect()->action('BookController@index')->with('success', 'Книга успешно отредактирована');
     }
 
     /**

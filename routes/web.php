@@ -12,5 +12,12 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+//
+//Route::resource('/', 'BookController', ['except' => 'show']);
 
-Route::resource('/', 'BookController');
+Route::get('/', 'BookController@index')->name('index');
+Route::get('/create', 'BookController@create')->name('create');
+Route::post('/', 'BookController@store')->name('store');
+Route::get('{book}/edit', 'BookController@edit')->name('edit');
+Route::patch('/{book}', 'BookController@update')->name('update');
+

@@ -23,7 +23,7 @@
                     <a href="{{ action('BookController@create') }}" class="btn btn-primary">Создать</a>
                 </td>
                 <td class="green">
-                    <a href="#" class="btn btn-success">Редактировать</a>
+                    <a href="{{ route('edit', ['book' => $book->id]) }}" class="btn btn-success">Редактировать</a>
                 </td>
             </tr>
         @endforeach
