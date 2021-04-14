@@ -38,9 +38,9 @@
             <input type="text" name="year" id="year" required autocomplete="off">
             <label for="year">Год выпуска: </label>
         </div>
-
+        <br/>
         <div class="form-row">
-            <input type="file" name="cover" id="cover" required>
+            <input type="file" name="cover" id="cover">
             <label for="cover">Загрузить обложку: </label>
         </div>
 

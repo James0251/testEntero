@@ -26,7 +26,8 @@ class BookRequest extends FormRequest
         return [
             'title' => 'required|min:3|max:100',
             'author' => 'required|min:2|max:100',
-            'year' => 'required|integer'
+            'year' => 'required|integer',
+            'cover' => 'mimes:jpeg,jpg,png|max:10000'
         ];
     }
 

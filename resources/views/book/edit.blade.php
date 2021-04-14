@@ -1,7 +1,7 @@
 @extends('layout.app')
 
 @section('content')
-    <form action="{{ route('update', ['book' => $book->id]) }}" class="ui-form" method="post">
+    <form action="{{ route('update', ['book' => $book->id]) }}" class="ui-form" method="post" enctype="multipart/form-data">
 
         @csrf
         @method('PATCH')
@@ -38,6 +38,11 @@
         <div class="form-row">
             <input type="text" name="year" id="year" value="{{ old('year') ?? $book->year ?? '' }}" required autocomplete="off">
             <label for="year">Год выпуска: </label>
+        </div>
+        <br/>
+        <div class="form-row">
+            <input type="file" name="cover" id="cover">
+            <label for="cover">Загрузить обложку: </label>
         </div>
 
         <p><input type="submit" value="Обновить запись"></p>

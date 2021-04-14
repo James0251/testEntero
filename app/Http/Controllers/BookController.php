@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Book;
 use Illuminate\Http\Request;
+use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\BookRequest;
 
@@ -36,7 +37,6 @@ class BookController extends Controller
             $book->cover = Storage::url($path);
         }
 
-
         $book->save();
         return redirect()->action('BookController@index')->with('success', 'Новый книга успешно добавлена');
     }
@@ -55,8 +55,18 @@ class BookController extends Controller
 
     public function update(BookRequest $request, Book $book)
     {
+        if ($request->hasFile('cover')) {
+            Storage::disk('public')->delete($book->cover);
+        }
+
         $book->update($request->all());
-        return redirect()->action('BookController@index')->with('success', 'Книга успешно отредактирована');
+        $cover = $request->file('cover');
+        if ($cover) {
+            $path = Storage::putFile('public', $cover);
+            $book->cover = Storage::url($path);
+        }
+        $book->save();
+        return redirect()->route('index')->with('success', 'Книга успешно отредактирована');
     }
 
 
