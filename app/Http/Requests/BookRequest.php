@@ -13,7 +13,7 @@ class BookRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,48 +24,26 @@ class BookRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => [
-                'required',
-                'string',
-                'min:3',
-                'max:100',
-            ],
-            'author' => [
-                'required',
-                'string',
-                'min:3',
-                'max:100',
-            ],
-            'year' => [
-                'required',
-                'integer',
-                'min:1'
-            ],
-
-            'cover' => 'nullable|image|mimes:jpeg,bmp,png',
+            'title' => 'required|min:3|max:100',
+            'author' => 'required|min:2|max:100',
+            'year' => 'required|integer'
         ];
     }
 
     public function messages() {
         return [
             'required' => 'Поле «:attribute» обязательно для заполнения',
-            'min' => [
-                'string' => 'Поле «:attribute» должно быть не меньше :min символов',
-                'numeric' => 'Нужно выбрать категорию нового поста блога',
-                'file' => 'Файл «:attribute» должен быть не меньше :min Кбайт'
-            ],
-            'max' => [
-                'string' => 'Поле «:attribute» должно быть не больше :max символов',
-                'file' => 'Файл «:attribute» должен быть не больше :max Кбайт'
-            ],
+            'integer' => 'Поле «:attribute» должно быть заполнено числами',
+            'min' => 'Поле «:attribute» должно быть не меньше :min символов',
+            'max' => 'Поле «:attribute» должно быть не больше :max символов',
         ];
     }
 
     public function attributes() {
         return [
-            'title' => 'Наименование',
-            'author' => 'Автор',
-            'year' => 'Год',
+            'title' => 'Название книги',
+            'author' => 'Автор книги',
+            'year' => 'Год выпуска',
             'cover' => 'Обложка книги',
         ];
     }

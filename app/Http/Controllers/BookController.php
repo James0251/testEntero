@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Book;
 use Illuminate\Http\Request;
+use App\Http\Requests\BookRequest;
 
 class BookController extends Controller
 {
@@ -21,7 +22,7 @@ class BookController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store(BookRequest $request)
     {
         $book = new Book();
         $book->title = $request->input('title');
@@ -48,7 +49,7 @@ class BookController extends Controller
     }
 
 
-    public function update(Request $request, Book $book)
+    public function update(BookRequest $request, Book $book)
     {
         $book->update($request->all());
         return redirect()->action('BookController@index')->with('success', 'Книга успешно отредактирована');
