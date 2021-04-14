@@ -1,7 +1,7 @@
 @extends('layout.app')
 
 @section('content')
-    <form action="{{ action('BookController@store') }}" class="ui-form" method="post">
+    <form action="{{ action('BookController@store') }}" class="ui-form" method="post" enctype="multipart/form-data">
 
         @csrf
 
@@ -37,6 +37,11 @@
         <div class="form-row">
             <input type="text" name="year" id="year" required autocomplete="off">
             <label for="year">Год выпуска: </label>
+        </div>
+
+        <div class="form-row">
+            <input type="file" name="cover" id="cover" required>
+            <label for="cover">Загрузить обложку: </label>
         </div>
 
         <p><input type="submit" value="Создать"></p>

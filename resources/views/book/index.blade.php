@@ -10,9 +10,10 @@
         <thead>
         <tr>
             <td>No</td>
-            <td class="grey">Название</td>
-            <td class="grey" nowrap>Автор</td>
-            <td class="grey">Год</td>
+            <td class="grey">Обложка книги</td>
+            <td class="grey">Название книги</td>
+            <td class="grey" nowrap>Автор книги</td>
+            <td class="grey">Год выпуска</td>
             <td class="green">Действия</td>
         </tr>
         </thead>
@@ -21,6 +22,9 @@
         @foreach($books as $book)
             <tr>
                 <td nowrap>{{ $book->id }}</td>
+                <td class="grey">
+                    <img src="{{ $book->cover }}" alt="" class="img-fluid mb-4 mt-4">
+                </td>
                 <td class="grey"><strong><i><a href="{{ route('edit', ['book' => $book->id]) }}">{{ $book->title }}</a></i></strong></td>
                 <td class="grey"><strong>{{ $book->author }}</strong></td>
                 <td class="grey">{{ $book->year }}</td>

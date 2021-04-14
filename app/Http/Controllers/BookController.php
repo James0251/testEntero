@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Book;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\BookRequest;
 
 class BookController extends Controller
@@ -28,16 +29,19 @@ class BookController extends Controller
         $book->title = $request->input('title');
         $book->author = $request->input('author');
         $book->year = $request->input('year');
+
+        $cover = $request->file('cover');
+        if ($cover) {
+            $path = Storage::putFile('public', $cover);
+            $book->cover = Storage::url($path);
+        }
+
+
         $book->save();
         return redirect()->action('BookController@index')->with('success', 'Новый книга успешно добавлена');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Book  $book
-     * @return \Illuminate\Http\Response
-     */
+
     public function show(Book $book)
     {
         //
